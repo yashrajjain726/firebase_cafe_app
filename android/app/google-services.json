@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "503180130078",
+    "project_id": "fir-cafe-app",
+    "storage_bucket": "fir-cafe-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:503180130078:android:c061b75ed3c337b1317b0f",
+        "android_client_info": {
+          "package_name": "com.yashraj.firebase_cafe_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "503180130078-smgu5srfrgrsojotjevs5gn3n2sp8gcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwbjbQJrkrbAISMZ6d4NYCMWSkZ6QLfeg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "503180130078-smgu5srfrgrsojotjevs5gn3n2sp8gcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
