@@ -1,12 +1,12 @@
 import 'package:firebase_cafe_app/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
 
 //text field state
@@ -18,11 +18,11 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.brown[200],
         elevation: 0.0,
-        title: Text("Sign In"),
+        title: Text("Sign Up"),
         centerTitle: true,
         actions: [
           FlatButton.icon(
-            label: Text("Register"),
+            label: Text("Sign In"),
             icon: Icon(
               Icons.person,
             ),
@@ -61,7 +61,7 @@ class _SignInState extends State<SignIn> {
               ),
               RaisedButton(
                 color: Colors.pink,
-                child: Text('Sign In', style: TextStyle(color: Colors.white)),
+                child: Text('Register', style: TextStyle(color: Colors.white)),
                 onPressed: () async {
                   print(email);
                   print(password);
