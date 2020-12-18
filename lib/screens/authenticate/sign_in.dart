@@ -1,4 +1,5 @@
 import 'package:firebase_cafe_app/services/auth.dart';
+import 'package:firebase_cafe_app/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -46,6 +47,9 @@ class _SignInState extends State<SignIn> {
                 height: 20.0,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(
+                    hintText: "Enter Email Address",
+                    labelText: "Email Address"),
                 validator: (value) => value.isEmpty ? 'Enter an Email' : null,
                 onChanged: (value) {
                   setState(() {
@@ -57,6 +61,8 @@ class _SignInState extends State<SignIn> {
                 height: 20.0,
               ),
               TextFormField(
+                decoration: textInputDecoration.copyWith(
+                    hintText: "Enter an Password", labelText: "Password"),
                 validator: (value) => value.length < 6
                     ? 'Enter an Password of more than 6 Characters'
                     : null,
