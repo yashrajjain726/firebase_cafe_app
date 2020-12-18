@@ -2,16 +2,20 @@ import 'package:firebase_cafe_app/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleView;
+  SignIn({this.toggleView});
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
   final AuthService _authService = AuthService();
+  final _formKey = GlobalKey<FormState>();
 
 //text field state
   String email = '';
   String password = '';
+  String error = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +30,23 @@ class _SignInState extends State<SignIn> {
             icon: Icon(
               Icons.person,
             ),
-            onPressed: () {},
+            onPressed: () {
+              widget.toggleView();
+            },
           ),
         ],
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
               SizedBox(
                 height: 20.0,
               ),
               TextFormField(
+                validator: (value) => value.isEmpty ? 'Enter an Email' : null,
                 onChanged: (value) {
                   setState(() {
                     email = value;
@@ -49,6 +57,9 @@ class _SignInState extends State<SignIn> {
                 height: 20.0,
               ),
               TextFormField(
+                validator: (value) => value.length < 6
+                    ? 'Enter an Password of more than 6 Characters'
+                    : null,
                 obscureText: true,
                 onChanged: (value) {
                   setState(() {
@@ -63,10 +74,24 @@ class _SignInState extends State<SignIn> {
                 color: Colors.pink,
                 child: Text('Sign In', style: TextStyle(color: Colors.white)),
                 onPressed: () async {
-                  print(email);
-                  print(password);
+                  if (_formKey.currentState.validate()) {
+                    dynamic result =
+                        await _authService.signInWithEmailPass(email, password);
+                    if (result == null) {
+                      setState(() {
+                        error = "SIGN IN CREDENTIALS ERROR";
+                      });
+                    }
+                  }
                 },
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                error,
+                style: TextStyle(color: Colors.red, fontSize: 14),
+              )
             ],
           ),
         ),
